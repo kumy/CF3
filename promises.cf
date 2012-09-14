@@ -64,6 +64,7 @@ bundle common def
 
     "acl" slist => {
         "$(sys.policy_hub)/24",  # Assume /16 LAN clients to start with
+		  "ec2-50-112-44-33.us-west-2.compute.amazonaws.com", ## add my amazon instance
 
                  #  "2001:700:700:3.*", 
                  #  "217.77.34.18", 
