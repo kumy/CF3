@@ -9,7 +9,7 @@ bundle common cfsketch_g
 
   vars:
        # Files that need to be loaded for this to work.
-       "inputs" slist => { "sketches/CFEngine/stdlib/cfengine_stdlib.cf", "sketches/VCS/vcs_mirror/main.cf" };
+       "inputs" slist => { "sketches/VCS/vcs_mirror/main.cf" };
 
        # string versions of the contexts for activation 001
       "_001_VCS__vcs_mirror__contexts_text[activated]" string => "ON";
