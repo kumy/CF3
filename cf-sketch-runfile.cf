@@ -1,0 +1,46 @@
+
+
+bundle common cfsketch_g
+{
+  classes:
+      # contexts
+       # contexts for activation 001
+      "_001_VCS__vcs_mirror__activated" expression => "true";
+
+  vars:
+       # Files that need to be loaded for this to work.
+       "inputs" slist => { "sketches/sketches/CFEngine/stdlib/cfengine_stdlib.cf", "sketches/sketches/VCS/vcs_mirror/main.cf" };
+
+       # string versions of the contexts for activation 001
+      "_001_VCS__vcs_mirror__contexts_text[activated]" string => "ON";
+       # string and slist variables for activation 001
+       "_001_VCS__vcs_mirror__branch" string => "master";
+       "_001_VCS__vcs_mirror__bundle_home" string => "$(sys.workdir)/inputs/sketches/VCS/vcs_mirror";
+       "_001_VCS__vcs_mirror__debug" string => "false";
+       "_001_VCS__vcs_mirror__origin" string => "git://github.com/kumy/CF3.git";
+       "_001_VCS__vcs_mirror__path" string => "/var/cfengine/masterfiles/";
+       "_001_VCS__vcs_mirror__runas" string => getenv("USER", 128);
+       "_001_VCS__vcs_mirror__sketch_authors" slist => { "Nick Anderson <nick@cmdln.org>","Ted Zlatanov <tzz@lifelogs.com>" };
+       "_001_VCS__vcs_mirror__sketch_depends" slist => { "CFEngine::stdlib" };
+       "_001_VCS__vcs_mirror__sketch_license" string => "MIT";
+       "_001_VCS__vcs_mirror__sketch_manifest" slist => { "README.md","main.cf","params/cfengine-core.json" };
+       "_001_VCS__vcs_mirror__sketch_manifest_cf" slist => { "main.cf" };
+       "_001_VCS__vcs_mirror__sketch_manifest_docs" slist => { "README.md" };
+       "_001_VCS__vcs_mirror__sketch_manifest_extra" slist => { "params/cfengine-core.json" };
+       "_001_VCS__vcs_mirror__sketch_name" string => "VCS::vcs_mirror";
+       "_001_VCS__vcs_mirror__sketch_portfolio" slist => { "cfdc" };
+       "_001_VCS__vcs_mirror__sketch_version" string => "1.03";
+       "_001_VCS__vcs_mirror__umask" string => "077";
+       "_001_VCS__vcs_mirror__vcs" string => "/usr/bin/git";
+       # array variables for activation 001
+
+}
+
+bundle agent cfsketch_run
+{
+  methods:
+      "cfsketch_g" usebundle => "cfsketch_g";
+    _001_VCS__vcs_mirror__activated::
+      "001 VCS::vcs_mirror 1" usebundle => vcs_mirror("cfsketch_g._001_VCS__vcs_mirror__");
+
+}
