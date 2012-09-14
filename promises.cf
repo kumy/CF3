@@ -13,8 +13,8 @@ bundlesequence  =>  {
                    };
 
 inputs          => {
-                   "${sys.workdir}/cfengine_stdlib.cf",
-                   "{$sys.workdir}/update.cf",
+                   "cfengine_stdlib.cf",
+                   "update.cf",
                    };
 
 version => "666";
