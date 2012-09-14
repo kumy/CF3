@@ -6,16 +6,16 @@
 
 body common control
 {
-bundlesequence  =>  {
-                   "update",
-	           "main",
-		   "cfsketch_run"
+bundlesequence  => {
+                      "update",
+                      "main",
+                      "cfsketch_run"
                    };
 
 inputs          => {
-                   "cfengine_stdlib.cf",
-                   "update.cf",
-		   "cf-sketch-runfile.cf", @(cfsketch_g.inputs)
+                      "cfengine_stdlib.cf",
+                      "update.cf",
+                      "cf-sketch-runfile.cf", @(cfsketch_g.inputs)
                    };
 version => "666";
 }
