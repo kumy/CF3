@@ -26,7 +26,7 @@ bundle agent system_packages {
     vars:
         "system_pkgs" slist => { "byobu", "cowsay" };
     packages:
-        "$(system_packages)"
+        "$(system_pkgs)"
             handle => "packages_dependencies",
                    comment => "install needed pkgs",
                    package_policy => "addupdate",
