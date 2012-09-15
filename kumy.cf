@@ -1,0 +1,27 @@
+#!/var/cfengine/bin/cf-promises -f
+body common control
+{
+   bundlesequence => { "user_kumy_vimrc"};
+   inputs          => {
+       "$(sys.workdir)/inputs/cfengine_stdlib.cf",
+   };
+}
+
+bundle agent user_kumy_vimrc {
+   vars:
+      user_list slist => { 
+         "kumy",
+         };
+
+   	"vim_conf[set tabstop]"      string => "3";
+   	"vim_conf[set shiftwidth]"   string => "3";
+   	"vim_conf[set bg]"           string => "dark";
+   	#"vim_conf[set noexpandtab]" string => "" ;
+
+   files:
+      "/home/${user_list}/.vimrc"
+			handle    => "edit_file_vimrc",
+			comment   => "ma promesse :) qui va faire craquer nanard",
+   		edit_line => maintain_key_values("vim_conf", " = "),
+			action    => warn_only;
+}
