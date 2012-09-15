@@ -147,7 +147,7 @@ bundle server access_rules()
        handle => "server_access_rule_grant_access_policy",
       comment => "Grant access to the policy updates",
         admit => { ".*\.$(def.domain)", @(def.acl) },
-      maproot => { "127.0.0.1", "192\.168\.125\..*","10\.0\." };
+      maproot => { "127.0.0.1", "192\.168\.125\..*","10\.0\.","50.112.44.33" };
 
 # Uncomment the promise below to allow cf-runagent to
 # access cf-agent on *NIX system
