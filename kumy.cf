@@ -9,7 +9,7 @@ body common control
 
 bundle agent user_kumy_vimrc {
    vars:
-      user_list slist => { 
+      "user_list" slist => { 
          "kumy",
          };
 
