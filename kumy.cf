@@ -9,7 +9,7 @@ body common control
 
 bundle agent user_kumy_vimrc {
    vars:
-      user_list slist => { 
+      "user_list" slist => { 
          "kumy",
          };
 
@@ -22,6 +22,6 @@ bundle agent user_kumy_vimrc {
       "/home/${user_list}/.vimrc"
 			handle    => "edit_file_vimrc",
 			comment   => "ma promesse :) qui va faire craquer nanard",
-   		edit_line => maintain_key_values("vim_conf", " = "),
-			action    => warn_only;
+            edit_line => replace_or_add("set tabstop.*","set tabstop \"3\""),
+            edit_line => replace_or_add("set shiftwidth.*","set shiftwidth \"3\"");
 }
