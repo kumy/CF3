@@ -1,11 +1,3 @@
-#!/var/cfengine/bin/cf-promises -f
-body common control
-{
-   bundlesequence => { "user_kumy_vimrc", "system_packages" };
-   inputs          => {
-       "$(sys.workdir)/inputs/cfengine_stdlib.cf",
-   };
-}
 
 bundle agent user_kumy_vimrc {
    vars:
