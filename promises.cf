@@ -7,15 +7,17 @@
 body common control
 {
 bundlesequence  => {
-                      "update",
-                      "main",
-                      "cfsketch_run"
+                     "update",
+                     "main",
+                     "cfsketch_run",
+							"system_packages"
                    };
 
 inputs          => {
-                      "cfengine_stdlib.cf",
-                      "update.cf",
-                      "cf-sketch-runfile.cf", @(cfsketch_g.inputs)
+                     "cfengine_stdlib.cf",
+                     "update.cf",
+                     "cf-sketch-runfile.cf", @(cfsketch_g.inputs),
+							"kumy.cf",
                    };
 version => "666";
 }
