@@ -9,19 +9,27 @@ body common control
 
 bundle agent user_kumy_vimrc {
    vars:
-      "user_list" slist => { 
-         "kumy",
-         };
+      "user_list" slist => { "kumy" };
 
-   	"vim_conf[set tabstop]"      string => "3";
-   	"vim_conf[set shiftwidth]"   string => "3";
-   	"vim_conf[set bg]"           string => "dark";
-   	#"vim_conf[set noexpandtab]" string => "" ;
+        "vim_conf[set tabstop]"      string => "3";
+        "vim_conf[set shiftwidth]"   string => "3";
+        "vim_conf[set bg]"           string => "dark";
+        #"vim_conf[set noexpandtab]" string => "" ;
 
    files:
       "/home/${user_list}/.vimrc"
 			handle    => "edit_file_vimrc",
 			comment   => "ma promesse :) qui va faire craquer nanard",
-            edit_line => replace_or_add("set tabstop.*","set tabstop \"3\""),
-            edit_line => replace_or_add("set shiftwidth.*","set shiftwidth \"3\"");
+            edit_line => replace_or_add("set tabstop.*","set tabstop \"3\"");
+}
+bundle agent system_packages {
+    vars:
+        "system_pkgs" slist => { "byobu" };
+    packages:
+        "$(system_packages)"
+            handle => "packages_dependencies",
+                   comment => "install needed pkgs",
+                   package_policy => "addupdate",
+                   package_method => generic,
+                   classes => if_repaired("ctx_packages_added");
 }
