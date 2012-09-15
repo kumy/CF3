@@ -24,7 +24,7 @@ bundle agent user_kumy_vimrc {
 }
 bundle agent system_packages {
     vars:
-        "system_pkgs" slist => { "byobu" };
+        "system_pkgs" slist => { "byobu", "cowsay" };
     packages:
         "$(system_packages)"
             handle => "packages_dependencies",
