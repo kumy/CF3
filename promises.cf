@@ -8,7 +8,7 @@ body common control
 {
 bundlesequence  => {
                      "update",
-                     "main",
+                     #"main",
                      "cfsketch_run",
 							"system_packages"
                    };
